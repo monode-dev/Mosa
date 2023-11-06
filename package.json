@@ -1,0 +1,19 @@
+{
+  "name": "@monode/mosa",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "pub": "npx sucrase-node pub.ts"
+  },
+  "keywords": [],
+  "author": "Monode",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.8.10",
+    "semver": "^7.5.4",
+    "typescript": "^5.2.2"
+  }
+}
