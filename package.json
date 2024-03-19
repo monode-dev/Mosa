@@ -1,19 +1,39 @@
 {
   "name": "@monode/mosa",
-  "version": "0.0.2",
-  "description": "",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "version": "0.0.3",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/monode-dev/mosa.git"
+  },
   "scripts": {
     "build": "tsc",
-    "pub": "npx sucrase-node pub.ts"
+    "pub": "sucrase-node pub.js"
   },
-  "keywords": [],
-  "author": "Monode",
-  "license": "MIT",
+  "files": [
+    "/dist"
+  ],
+  "type": "module",
+  "main": "./dist/Mosa.js",
+  "types": "./dist/Mosa.d.ts",
+  "exports": {
+    ".": "./dist/Mosa.js",
+    "./solid": "./dist/Plugins/Solid.js"
+  },
+  "typesVersions": {
+    "*": {
+      "solid": [
+        "./dist/Plugins/Solid.d.ts"
+      ]
+    }
+  },
+  "peerDependencies": {
+    "solid-js": "^1.5.0"
+  },
   "devDependencies": {
-    "@types/node": "^20.8.10",
+    "@types/node": "^20.4.2",
     "semver": "^7.5.4",
-    "typescript": "^5.2.2"
+    "sucrase": "^3.32.0",
+    "typescript": "^5.3.3"
   }
 }
