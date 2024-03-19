@@ -46,6 +46,7 @@ export function initializeMosa(mosaConfig: {
     on: { get value(): any }[];
     do: () => void;
   }): void;
+  onDispose(func: () => void): void;
 }) {
   return {
     // SECTION: Prop
@@ -184,6 +185,12 @@ export function initializeMosa(mosaConfig: {
             do: func,
           })
         : mosaConfig.createAutoEffect(func);
+    },
+
+    // SECTION: On Dispose
+    /** Runs the provided function when the current reactive context is disposed. */
+    onDispose(func: () => void) {
+      mosaConfig.onDispose(func);
     },
 
     // SECTION: Exists

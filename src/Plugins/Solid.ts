@@ -1,4 +1,10 @@
-import { createEffect, createMemo, createSignal, on } from "solid-js";
+import {
+  createEffect,
+  createMemo,
+  createSignal,
+  on,
+  onCleanup,
+} from "solid-js";
 import { MosaConfig } from "../Mosa.js";
 
 /** Use like:
@@ -26,4 +32,5 @@ export const mosaConfigForSolid = {
       ),
     );
   },
+  onDispose: onCleanup,
 } satisfies MosaConfig;
