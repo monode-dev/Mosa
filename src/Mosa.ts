@@ -1,4 +1,6 @@
 // SECTION: Types
+export type MosaConfig = Parameters<typeof initializeMosa>[0];
+export type MosaApi = ReturnType<typeof initializeMosa>;
 export type ReadonlyProp<T> = { get value(): Unionize<T> };
 export type WriteonlyProp<T> = { set value(x: Unionize<T>) };
 export type Prop<GetType, SetType = GetType> = ReadonlyProp<GetType> &
@@ -36,7 +38,6 @@ type _PropsToUndefined<T, ExcludeKeys> = T extends any
   : never;
 
 // SECTION: Initialize
-export type MosaConfig = Parameters<typeof initializeMosa>[0];
 export function initializeMosa(mosaConfig: {
   createSignal<T>(initValue: T): { get(): T; set(newValue: T): void };
   createComputed<T>(get: () => T): { get(): T };
