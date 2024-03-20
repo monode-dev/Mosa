@@ -39,7 +39,7 @@ type _PropsToUndefined<T, ExcludeKeys> = T extends any
 
 // SECTION: Initialize
 export function initializeMosa(mosaConfig: {
-  createRoot: (func: () => void) => void;
+  createRoot: <T>(func: () => T) => T;
   createSignal<T>(initValue: T): { get(): T; set(newValue: T): void };
   createComputed<T>(get: () => T): { get(): T };
   createAutoEffect(effect: () => void): void;
