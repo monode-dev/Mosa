@@ -39,6 +39,7 @@ type _PropsToUndefined<T, ExcludeKeys> = T extends any
 
 // SECTION: Initialize
 export function initializeMosa(mosaConfig: {
+  createRoot: (func: () => void) => void;
   createSignal<T>(initValue: T): { get(): T; set(newValue: T): void };
   createComputed<T>(get: () => T): { get(): T };
   createAutoEffect(effect: () => void): void;
@@ -49,6 +50,12 @@ export function initializeMosa(mosaConfig: {
   onDispose(func: () => void): void;
 }) {
   return {
+    // SECTION: use Root
+    /** Runs the provided function in a root-level reactive context. */
+    useRoot(func: () => void) {
+      mosaConfig.createRoot(func);
+    },
+
     // SECTION: Prop
     /** Creates a reactive value that can be accessed via `.value`.
      * ```tsx

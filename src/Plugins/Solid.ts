@@ -1,6 +1,7 @@
 import {
   createEffect,
   createMemo,
+  createRoot,
   createSignal,
   on,
   onCleanup,
@@ -16,6 +17,7 @@ import { MosaConfig } from "../Mosa.js";
  * ```
  */
 export const mosaConfigForSolid = {
+  createRoot,
   createSignal: (initValue) => {
     const [get, set] = createSignal(initValue);
     return { get, set };
