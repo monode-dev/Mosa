@@ -1,6 +1,6 @@
 {
   "name": "@monode/mosa",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -26,9 +26,6 @@
         "./dist/Plugins/Solid.d.ts"
       ]
     }
-  },
-  "peerDependencies": {
-    "solid-js": "^1.5.0"
   },
   "devDependencies": {
     "@types/node": "^20.4.2",
