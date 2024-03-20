@@ -186,7 +186,7 @@ export function initializeMosa(mosaConfig: {
         on: ReadonlyProp<any>[];
       }>,
     ) {
-      this.exists(options?.on)
+      exists(options?.on)
         ? mosaConfig.createManualEffect({
             on: options.on,
             do: func,
@@ -202,8 +202,10 @@ export function initializeMosa(mosaConfig: {
 
     // SECTION: Exists
     /** A type save way to check if `x` is null/undefined. */
-    exists<T>(x: T): x is NonNullable<T> {
-      return x !== undefined && x !== null;
-    },
+    exists,
   } as const;
+}
+
+function exists<T>(x: T): x is NonNullable<T> {
+  return x !== undefined && x !== null;
 }
