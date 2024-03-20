@@ -1,39 +1,37 @@
-import { MosaConfig } from "../Mosa.js";
+import { initializeMosa } from "../Mosa.js";
+import {
+  createEffect,
+  createMemo,
+  createRoot,
+  createSignal,
+  on,
+  onCleanup,
+} from "solid-js";
 
 /** Use like:
  * ```ts
- * import { initializeMosa } from "mosa";
- * import { getMosaConfigForSolid } from "mosa/solid";
+ * import { mosaForSolid } from "mosa/solid-js";
  *
- * module.exports = initializeMosa(getMosaConfigForSolid({...}));
+ * module.exports = mosaForSolid;
  * ```
  */
-export function getMosaConfigForSolid(solidConfig: {
-  createRoot: <T>(func: () => T) => T;
-  createSignal<T>(initValue: T): [() => T, (newValue: T) => void];
-  createMemo<T>(get: () => T): () => T;
-  createEffect(effect: () => void): void;
-  on(deps: (() => any)[], effect: () => void): () => void;
-  onCleanup(func: () => void): void;
-}) {
-  return {
-    createRoot: solidConfig.createRoot,
-    createSignal: (initValue) => {
-      const [get, set] = solidConfig.createSignal(initValue);
-      return { get, set };
-    },
-    createComputed: (compute) => {
-      return { get: solidConfig.createMemo(compute) };
-    },
-    createAutoEffect: solidConfig.createEffect,
-    createManualEffect: ({ on: onSignals, do: effect }) => {
-      solidConfig.createEffect(
-        solidConfig.on(
-          onSignals.map((signal) => () => signal.value),
-          effect,
-        ),
-      );
-    },
-    onDispose: solidConfig.onCleanup,
-  } satisfies MosaConfig;
-}
+export const mosaForSolid = initializeMosa({
+  createRoot: createRoot,
+  createSignal: (initValue) => {
+    const [get, set] = createSignal(initValue);
+    return { get, set };
+  },
+  createComputed: (compute) => {
+    return { get: createMemo(compute) };
+  },
+  createAutoEffect: createEffect,
+  createManualEffect: ({ on: onSignals, do: effect }) => {
+    createEffect(
+      on(
+        onSignals.map((signal) => () => signal.value),
+        effect,
+      ),
+    );
+  },
+  onDispose: onCleanup,
+});
