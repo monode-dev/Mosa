@@ -8,7 +8,7 @@ import { MosaConfig, initializeMosa } from "../Mosa.js";
  * module.exports = initializeMosa(getMosaConfigForSolid({...}));
  * ```
  */
-export function initializeMosaForSolid(solidConfig: {
+export function getMosaConfigForSolid(solidConfig: {
   createRoot: <T>(func: () => T) => T;
   createSignal<T>(initValue: T): [() => T, (newValue: T) => void];
   createMemo<T>(get: () => T): () => T;
