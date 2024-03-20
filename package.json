@@ -1,6 +1,6 @@
 {
   "name": "@monode/mosa",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -18,12 +18,12 @@
   "types": "./dist/Mosa.d.ts",
   "exports": {
     ".": "./dist/Mosa.js",
-    "./solid": "./dist/Plugins/Solid.js"
+    "./solid-js": "./dist/Plugins/SolidJs.js"
   },
   "typesVersions": {
     "*": {
-      "solid": [
-        "./dist/Plugins/Solid.d.ts"
+      "solid-js": [
+        "./dist/Plugins/SolidJs.d.ts"
       ]
     }
   },
