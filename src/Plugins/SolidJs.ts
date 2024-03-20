@@ -1,4 +1,4 @@
-import { MosaConfig, initializeMosa } from "../Mosa.js";
+import { MosaConfig } from "../Mosa.js";
 
 /** Use like:
  * ```ts
@@ -13,7 +13,7 @@ export function getMosaConfigForSolid(solidConfig: {
   createSignal<T>(initValue: T): [() => T, (newValue: T) => void];
   createMemo<T>(get: () => T): () => T;
   createEffect(effect: () => void): void;
-  on(deps: (() => any)[] | (() => any), effect: () => void): () => any;
+  on(deps: (() => any)[], effect: () => void): () => void;
   onCleanup(func: () => void): void;
 }) {
   return {
