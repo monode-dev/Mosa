@@ -52,8 +52,8 @@ export function initializeMosa(mosaConfig: {
   return {
     // SECTION: use Root
     /** Runs the provided function in a root-level reactive context. */
-    useRoot(func: () => void) {
-      mosaConfig.createRoot(func);
+    useRoot<T>(func: () => T) {
+      return mosaConfig.createRoot(func);
     },
 
     // SECTION: Prop
