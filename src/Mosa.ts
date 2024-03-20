@@ -71,7 +71,7 @@ export function initializeMosa(mosaConfig: {
      * }
      * ``` */
     useProp<GetType, SetType = GetType>(
-      initValue: GetType | SetType,
+      initValue: GetType,
     ): Prop<GetType, SetType> {
       const { get, set } = mosaConfig.createSignal(initValue);
       // We prefer to the `.value` syntax to Solid's function syntax, hence why we do this.
