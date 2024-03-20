@@ -13,7 +13,7 @@ export function getMosaConfigForSolid(solidConfig: {
   createSignal<T>(initValue: T): [() => T, (newValue: T) => void];
   createMemo<T>(get: () => T): () => T;
   createEffect(effect: () => void): void;
-  on(deps: (() => any)[] | (() => any), effect: () => void): () => void;
+  on(deps: (() => any)[] | (() => any), effect: () => void): () => any;
   onCleanup(func: () => void): void;
 }) {
   return {
