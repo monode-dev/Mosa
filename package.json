@@ -1,6 +1,6 @@
 {
-  "name": "@monode/mosa",
-  "version": "0.0.21",
+  "name": "mosa-js",
+  "version": "0.0.22",
   "license": "MIT",
   "repository": {
     "type": "git",
