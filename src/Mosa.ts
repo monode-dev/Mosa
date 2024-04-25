@@ -3,8 +3,10 @@ export type MosaConfig = Parameters<typeof initializeMosa>[0];
 export type MosaApi = ReturnType<typeof initializeMosa>;
 export type ReadonlyProp<T> = { get value(): Unionize<T> };
 export type WriteonlyProp<T> = { set value(x: Unionize<T>) };
-export type Prop<GetType, SetType = GetType> = ReadonlyProp<GetType> &
-  WriteonlyProp<SetType>;
+export type Prop<GetType, SetType = GetType> = {
+  get value(): Unionize<GetType>;
+  set value(x: Unionize<SetType>);
+};
 export type Unionize<T> = _Unionize<T, T>;
 type _Unionize<T, All> = T extends any
   ? T extends null | undefined
@@ -36,6 +38,12 @@ type _UnionToIntersection<U> = (
 type _PropsToUndefined<T, ExcludeKeys> = T extends any
   ? { [K in Exclude<keyof T, ExcludeKeys>]?: undefined }
   : never;
+
+// const pending = Symbol("pending");
+// type AutoSave = { get value(): typeof pending | number; set value(x: number) };
+// const test: AutoSave = {} as any;
+// test.value;
+// test.value = pending;
 
 // SECTION: Initialize
 export function initializeMosa(mosaConfig: {
